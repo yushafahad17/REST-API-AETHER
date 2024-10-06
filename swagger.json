@@ -1,0 +1,988 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "REST API | AETHER",
+    "contact": {
+      "name": "Aether",
+      "url": "https://aetherz.xyz",
+      "whatsapp": "+6285798045817"
+    }
+  },
+  "paths": {
+    "/hello": {
+      "get": {
+        "tags": ["Test Here"],
+        "summary": "Menyapa Dunia",
+        "description": "Endpoint untuk menyapa dunia",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ai": {
+      "get": {
+        "tags": ["Ai"],
+        "summary": "Interaksi dengan AI",
+        "description": "Endpoint untuk interaksi dengan AI",
+               "parameters": [
+          {
+            "name": "prompt",
+            "in": "query",
+            "description": "Turbo 3.5",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pinterest": {
+  "get": {
+    "summary": "Get images from Pinterest",
+    "tags": ["Pinterest"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "query",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "Query string to search for images"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/wallpaper": {
+  "get": {
+    "summary": "Get wallpapers",
+    "tags": ["Wallpaper"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "title",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "Title of the wallpaper to search for"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the wallpaper"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Type of the wallpaper"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Source URL of the wallpaper"
+                  },
+                  "image": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the image"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/wikimedia": {
+  "get": {
+    "summary": "Search images on Wikimedia Commons",
+    "tags": ["Wikimedia"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "title",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "Title of the image to search for on Wikimedia Commons"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the image"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Source URL of the image"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/quotesanime": {
+  "get": {
+    "summary": "Get quotes from anime",
+    "tags": ["Quotes Anime"],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "link": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to the quote source"
+                  },
+                  "gambar": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the image related to the quote"
+                  },
+                  "karakter": {
+                    "type": "string",
+                    "description": "Character from the anime"
+                  },
+                  "anime": {
+                    "type": "string",
+                    "description": "Name of the anime"
+                  },
+                  "episode": {
+                    "type": "string",
+                    "description": "Episode information"
+                  },
+                  "up_at": {
+                    "type": "string",
+                    "description": "Up at information"
+                  },
+                  "quotes": {
+                    "type": "string",
+                    "description": "The quote"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/aiovideodl": {
+  "post": {
+    "summary": "Download video or audio using AIO Video Downloader",
+    "tags": ["AIO Video Downloader"],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "link": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL of the video or audio to download"
+              }
+            },
+            "required": ["link"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of the video or audio"
+                },
+                "download_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Download URL of the video or audio"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/umma": {
+  "get": {
+    "summary": "Get media content from a URL using Umma",
+    "tags": ["Umma"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "url",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "URL of the media content"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of the media content"
+                },
+                "author": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the author"
+                    },
+                    "profilePic": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the author's profile picture"
+                    }
+                  }
+                },
+                "caption": {
+                  "type": "string",
+                  "description": "Caption of the media content"
+                },
+                "media": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the media content"
+                  }
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Type of the media content (image or video)"
+                },
+                "like": {
+                  "type": "string",
+                  "description": "Number of likes on the media content"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/ringtone": {
+  "get": {
+    "summary": "Get ringtones",
+    "tags": ["Ringtone"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "title",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "Title of the ringtone to search for"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Title of the ringtone"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Source URL of the ringtone"
+                  },
+                  "audio": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the ringtone audio"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/styletext": {
+  "get": {
+    "summary": "Style text",
+    "tags": ["Style Text"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "text",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "Text to be styled"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the text style"
+                  },
+                  "result": {
+                    "type": "string",
+                    "description": "Styled text"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/ronaldo": {
+  "get": {
+    "tags": ["Random"],
+    "summary": "Get a random Ronaldo image",
+    "produces": [
+      "image/jpeg",
+      "image/png",
+      "image/jpg"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful operation",
+        "content": {
+          "image/jpeg": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "image/png": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "image/jpg": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/messi": {
+  "get": {
+    "tags": ["Random"],
+    "summary": "Get a random Messi image",
+    "produces": [
+      "image/jpeg",
+      "image/png",
+      "image/jpg"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful operation",
+        "content": {
+          "image/jpeg": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "image/png": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "image/jpg": {
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/api/tiktok": {
+  "get": {
+    "tags": ["Downloader"],
+    "summary": "Unduh Video TikTok",
+    "description": "Endpoint untuk mengunduh video TikTok",
+           "parameters": [
+      {
+        "name": "url",
+        "in": "query",
+        "description": "Url Tiktok Downloader",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    }
+  }
+},
+"/api/igdl": {
+  "get": {
+    "tags": ["Downloader"],
+    "summary": "Unduh Konten Instagram",
+    "description": "Endpoint untuk mengunduh konten Instagram",
+           "parameters": [
+      {
+        "name": "url",
+        "in": "query",
+        "description": "Url Ig",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    }
+  }
+},
+"/ghstalk": {
+  "get": {
+    "tags": ["Search"],
+    "summary": "Stalk Github User",
+    "description": "Endpoint untuk Github Stalk",
+    "parameters": [
+      {
+        "name": "username",
+        "in": "query",
+        "description": "Nama pengguna GitHub yang ingin dicari",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    }
+  }
+},
+"/ffstalk": {
+  "get": {
+    "tags": ["Search"],
+    "summary": "Stalk Freefire User",
+    "description": "Endpoint untuk Freefire Stalk",
+    "parameters": [
+      {
+        "name": "userid",
+        "in": "query",
+        "description": "Nama pengguna Freefire yang ingin dicari",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    }
+  }
+},
+"/cuaca": {
+  "post": {
+    "tags": ["Post"],
+    "summary": "Mendapatkan informasi cuaca",
+    "description": "Endpoint untuk mendapatkan informasi cuaca berdasarkan nama kota.",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Nama kota untuk mendapatkan informasi cuaca.",
+                "example": "Jakarta"
+              }
+            },
+            "required": ["text"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "location": { "type": "string" },
+                "country": { "type": "string" },
+                "description": { "type": "string" },
+                "temperature": { "type": "number" },
+                "temp_max": { "type": "number" },
+                "temp_min": { "type": "number" },
+                "humidity": { "type": "number" },
+                "wind_speed": { "type": "number" }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request"
+      },
+      "500": {
+        "description": "Internal Server Error"
+      }
+    }
+  }
+},
+"/ytsearch": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Pencarian",
+        "description": "Endpoint untuk Pencarian",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Yang Ingin di cari"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mediafire": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download dari Mediafire",
+        "description": "Endpoint untuk download dari Mediafire",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL file di Mediafire"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/soundcloud": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download dari SoundCloud",
+        "description": "Endpoint untuk download dari SoundCloud",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL lagu di SoundCloud"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tiktok": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download video dari TikTok",
+        "description": "Endpoint untuk download video dari TikTok",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL video di TikTok"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/twitter": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download video dari Twitter",
+        "description": "Endpoint untuk download video dari Twitter",
+        "parameters": [
+          {
+            "name": "link",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL tweet di Twitter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/facebook": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download video dari Facebook",
+        "description": "Endpoint untuk download video dari Facebook",
+        "parameters": [
+          {
+            "name": "link",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL video di Facebook"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sfilemobi": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download dari Sfile.mobi",
+        "description": "Endpoint untuk download dari Sfile.mobi",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL file di Sfile.mobi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ytmp3": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download audio dari YouTube",
+        "description": "Endpoint untuk download audio dari YouTube",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL video di YouTube"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+        "/ytmp4": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download Vidio dari YouTube",
+        "description": "Endpoint untuk download vidio dari YouTube",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL video di YouTube"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+        "/playvideo": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "playvideo",
+        "description": "Endpoint untuk playvideo",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Apa yang ingin Di play"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+        "/terabox": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Download Terabox",
+        "description": "Endpoint untuk Download Terabox",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "URL Terabox"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+                "/playaudio": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Play Audio",
+        "description": "Endpoint untuk Play Audio",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Judul nya"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    
+            "/play": {
+      "get": {
+        "tags": ["Downloader"],
+        "summary": "Play Music/Vidio",
+        "description": "Endpoint untuk Play Music",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Judul nya"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/igstalk": {
+      "get": {
+        "tags": ["Search"],
+        "summary": "Informasi Pengguna Instagram",
+        "description": "Endpoint untuk mendapatkan informasi pengguna Instagram",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Nama pengguna Instagram yang ingin dicari",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

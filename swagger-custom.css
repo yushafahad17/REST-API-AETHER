@@ -1,0 +1,59 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+.swagger-ui .topbar {
+  background-color: #007bff;
+}
+
+.swagger-ui .info .title {
+  color: #007bff;
+}
+
+.swagger-ui .btn.execute {
+  background-color: #28a745;
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  background-color: #17a2b8;
+}
+
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  background-color: #28a745;
+}
+
+.swagger-ui .opblock.opblock-put .opblock-summary-method {
+  background-color: #ffc107;
+}
+
+.swagger-ui .opblock.opblock-delete .opblock-summary-method {
+  background-color: #dc3545;
+}
+
+.swagger-ui .scheme-container {
+  background-color: #e9ecef;
+}
+
+.swagger-ui select {
+  border-color: #1a237e;
+}
+
+.swagger-ui .opblock {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.swagger-ui input[type=text], .swagger-ui textarea {
+  border-radius: 4px;
+}
+
+.swagger-ui .opblock-tag {
+  font-size: 24px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.swagger-ui .opblock-tag:hover {
+  background-color: transparent;
+}

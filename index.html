@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API | AETHER</title>
+    <link rel="shortcut icon" href="https://btch.pages.dev/file/7576594882b09cbf341e9.jpg" type="image/x-icon" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swagger UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.5/swagger-ui.min.css" integrity="sha512-6LuVsJW3b8POokLqWc7V9zWwjeHFGbe3bUuPmvsm5QD2FK7BN8TS39VZjs92WdeXQdEwvKZgA13aKkIVJheHeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Custom CSS untuk halaman */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .btn-api-docs {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .btn-api-docs:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo web -->
+        <img src="https://btch.pages.dev/file/d66749a2e0a0b5771296a.jpg" alt="Logo" class="mb-4" style="width: 100px;">
+        <!-- Judul -->
+        <h1 class="mb-4">API Documentation</h1>
+        <!-- Deskripsi -->
+        <p class="lead mb-4">Welcome to the API documentation page!</p>
+        <!-- Tombol menuju halaman API docs -->
+        <a href="/api-docs" class="btn btn-api-docs">Go to API Docs <i class="fas fa-external-link-alt"></i></a>
+        <a href="https://wa.me/6285798045817" class="btn btn-api-docs"> WhatsApp Developer <i class="fas fa-external-link-alt"></i></a>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swagger UI JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.5/swagger-ui-bundle.js" integrity="sha512-xgTfsETV4CXy2Cifh8D8s9vOU5i4Yph5P5YlDTHWV0+1VpJzPBEYX9cIGlf2gCyPIitwosV8C4Vr5DWa09qBOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.5/swagger-ui-standalone-preset.js" integrity="sha512-piHN5uYIBiMWQ6v9F0L0oK0CIsGyZbpWPLSW1B+XTAofG9NzYJeyuURiE/FcDxv3xJYH1/8WyM1oK2cZYq8ybg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Konfigurasi Swagger UI -->
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: "/swagger.json",
+                dom_id: "#swagger-ui",
+                presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+                layout: "BaseLayout",
+                deepLinking: true
+            });
+        };
+    </script>
+</body>
+</html>
